@@ -31,6 +31,12 @@ namespace Kata20170912_AreWeAlternate
             IsAltShouldBeFalse("abb");
         }
 
+        [TestMethod]
+        public void input_baa_should_return_false()
+        {
+            IsAltShouldBeFalse("baa");
+        }
+
         private static void IsAltShouldBeTrue(string word)
         {
             var kata = new Kata();
@@ -52,13 +58,16 @@ namespace Kata20170912_AreWeAlternate
         {
             var alt = new [] {'a', 'e', 'i', 'o', 'u'};
 
+            var evenChars = word.Select((c, i) => i % 2 == 0 ? c : ' ').Where(a => a != ' ');
+            var oddChars = word.Select((c, i) => i % 2 == 1 ? c : ' ').Where(a => a != ' ');
+
             if (alt.Contains(word[0]))
             {
-                return word.Select((c, i) => i % 2 == 0 ? c : ' ').Where(a => a != ' ').All(alt.Contains); 
+                return evenChars.All(alt.Contains) && oddChars.All(c => !alt.Contains(c)); 
             }
-            else if(!alt.Contains(word[0]) && alt.Contains(word[1]))
+            if(!alt.Contains(word[0]))
             {
-                return true;
+                return evenChars.All(c => !alt.Contains(c)) && oddChars.All(c => alt.Contains(c));
             }
 
             return false;
