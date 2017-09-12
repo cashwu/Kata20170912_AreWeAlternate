@@ -19,6 +19,12 @@ namespace Kata20170912_AreWeAlternate
             IsAltShouldBeTrue("ab");
         }
 
+        [TestMethod]
+        public void input_ba_should_return_true()
+        {
+            IsAltShouldBeTrue("ba");
+        }
+
         private static void IsAltShouldBeTrue(string word)
         {
             var kata = new Kata();
@@ -41,6 +47,10 @@ namespace Kata20170912_AreWeAlternate
             var alt = new [] {'a', 'e', 'i', 'o', 'u'};
 
             if (alt.Contains(word[0]) && !alt.Contains(word[1]))
+            {
+                return true;
+            }
+            else if(!alt.Contains(word[0]) && alt.Contains(word[1]))
             {
                 return true;
             }
