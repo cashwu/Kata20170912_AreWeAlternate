@@ -37,6 +37,24 @@ namespace Kata20170912_AreWeAlternate
             IsAltShouldBeFalse("baa");
         }
 
+        [TestMethod]
+        public void input_amazon_should_return_true()
+        {
+            IsAltShouldBeTrue("amazon");
+        }
+
+        [TestMethod]
+        public void input_banana_should_return_true()
+        {
+            IsAltShouldBeTrue("banana");
+        }
+
+        [TestMethod]
+        public void input_apple_should_return_false()
+        {
+            IsAltShouldBeFalse("apple");
+        }
+
         private static void IsAltShouldBeTrue(string word)
         {
             var kata = new Kata();
